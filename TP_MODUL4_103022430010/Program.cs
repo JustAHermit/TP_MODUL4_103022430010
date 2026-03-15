@@ -1,4 +1,63 @@
-﻿public class KodePos
+﻿public class DoorMachine
+{
+    public enum State { Terkunci, Terbuka };
+    public State currentState;
+
+    public DoorMachine()
+    {
+        currentState = State.Terkunci;
+        Console.WriteLine("Pintu terkunci");
+    }
+
+    public void BukaPintu()
+    {
+        if (currentState == State.Terkunci)
+        {
+            currentState = State.Terbuka;
+            Console.WriteLine("Pintu tidak terkunci");
+        }
+    }
+
+    public void KunciPintu()
+    {
+        if (currentState == State.Terbuka)
+        {
+            currentState = State.Terkunci;
+            Console.WriteLine("Pintu terkunci");
+        }
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        DoorMachine pintu = new DoorMachine();
+
+        Console.WriteLine("Ketik 'Buka' untuk membuka atau 'Kunci' untuk mengunci.");
+
+        while (true)
+        {
+            Console.Write("Perintah: ");
+            string input = Console.ReadLine();
+
+            if (input == "Buka")
+            {
+                pintu.BukaPintu();
+            }
+            else if (input == "Kunci")
+            {
+                pintu.KunciPintu();
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+}
+
+/*public class KodePos
 {
     public Dictionary<string, string> kelPos = new Dictionary<string, string>()
     {
@@ -40,4 +99,4 @@ class Program
         Console.WriteLine("Kelurahan: " + kelPilihan);
         Console.WriteLine("Kode Pos : " + hasil);
     }
-}
+}*/
